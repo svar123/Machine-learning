@@ -1,0 +1,17 @@
+
+
+pkl files:
+----------
+
+my_classifier.pkl
+my_dataset.pkl
+my_feature_list.pkl
+
+python files:
+------------
+poi_id.py     (main python file)
+functions.py  (helper functions)
+
+html file:
+-----------
+FinalProject.html  (project related questions/answers)
