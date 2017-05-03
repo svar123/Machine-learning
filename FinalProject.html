@@ -11771,7 +11771,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 1:</strong> <em>Summarize for us the goal of this project and how machine learning is useful in trying to accomplish it. As part of your answer, give some background on the dataset and how it can be used to answer the project question. Were there any outliers in the data when you got it, and how did you handle those?</em></p>
 <p>The goal of this project is to use machine learning to build an algorithm to identify Enron Employees who may have committed fraud based on the public Enron financial and email dataset. Machine Learning is very useful since we can build predictor models that can classify an individual as a 'Person of Interest (poi)' or not. The model can also be used for other similar cases.</p>
-<p>The dataset contained 146 records with 1 labeled feature (poi), 14 financial features, and 6 email features. There were 18 names labeled as  "Person Of Interest" (poi). This dataset with 146 employee names with 21 features can be used to build a predictive model that can answer the project question whether an individual is a poi or not.</p>
+<p>The dataset contained 146 records with 1 labeled feature (poi), 14 financial features, and 6 email features. There were 18 names labeled as  "Person Of Interest" (poi) and the remaining 128 were non-poi. This dataset with 146 employee names with 21 features can be used to build a predictive model that can answer the project question whether an individual is a poi or not. Since the class label is unbalanced with 18 poi and rest non-poi, accuracy cannot be used as a metric to evaluate the model. Therefore, I used precision, recall and F1 score.</p>
 <p>There were 3 outliers in the dataset found using exploratory data analysis (scatter plot) and the pdf file 'enroninsiderpay.pdf'. The 3 outliers were:</p>
 <ul>
 <li>TOTAL : had the total value and did not represent an individual</li>
@@ -11843,7 +11843,8 @@ div#notebook {
 </ul>
 <p>The first two new features were chosen with the idea that POIs probably send/receive more messages from other POIs. The third feature was chosen thinking that the sum of total (salary and bonus) would be higher for POIs.</p>
 <p>Out of the original 21 features, 6 were removed since more than 50% of values were NaNs and 3 new features were added for a new total of 18 features.</p>
-<p>Then I used <code>SelectKBest</code> to select the 10 best features. Here are the 10 best features with their scores:</p>
+<p>Then I used <code>SelectKBest</code> to select the 10 best features which had scores (ANOVA F-value between label/feature) above 5. The other features with scores 5 and below were excluded from the feature set. This will reduce the  complexity of the model, reduce overfitting and reduce training time.</p>
+<p>Here are the 10 best features with their scores:</p>
 
 </div>
 </div>
